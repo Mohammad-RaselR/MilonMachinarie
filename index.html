@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Milon Machinaries | Industrial Machinery Supplier & Precision Engineering Dhaka Bangladesh</title>
+  <meta name="title" content="Milon Machinaries | Industrial Machinery Supplier & Precision Engineering Dhaka Bangladesh">
+  <meta name="description" content="Milon Machinaries is Bangladesh's premier industrial supplier of precision lathe machines, CNC turning centers, hydraulic presses, diesel generators, rotary screw compressors, and genuine spare parts. Located at 10/2 Modon Pal Lane, Dhaka 1100. Contact: me.hasaniqbalme@gmail.com">
+  <meta name="keywords" content="Milon Machinaries, lathe machine Bangladesh, CNC lathe Dhaka, industrial machinery Dhaka, hydraulic press Bangladesh, generator 150 kva, Modon Pal Lane Dhaka, engineering tools">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Milon Machinaries Ltd.">
+
+  <!-- Notion Style CSS -->
+  <link rel="stylesheet" href="css/notion.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ==========================================================================
+         NOTION SIDEBAR NAVIGATION
+         ========================================================================== -->
+    <aside class="notion-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-title-group">
+          <div class="brand-icon">M</div>
+          <span>Milon Machinaries</span>
+        </div>
+        <button id="mobile-menu-btn" class="mobile-toggle-btn" aria-label="Toggle Navigation">✕</button>
+      </div>
+
+      <div class="sidebar-section-title">Quick Actions</div>
+      <ul class="sidebar-nav">
+        <li class="nav-item" id="open-command-btn">
+          <span class="nav-icon">🔍</span>
+          <span style="flex:1;">Quick Search...</span>
+          <span class="kbd-shortcut">⌘K</span>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Workspace Pages</div>
+      <ul class="sidebar-nav">
+        <li class="nav-item active" data-target="catalog-section">
+          <span class="nav-icon">🏭</span>
+          <span>Machinery Catalog</span>
+        </li>
+        <li class="nav-item" data-target="rfq-section">
+          <span class="nav-icon">📋</span>
+          <span>RFQ Shortlist</span>
+          <span id="rfq-count-badge" class="kbd-shortcut" style="display:none; background:var(--text-main); color:var(--bg-main); font-weight:bold;">0</span>
+        </li>
+        <li class="nav-item" data-target="services-section">
+          <span class="nav-icon">🛠️</span>
+          <span>Workshop Services</span>
+        </li>
+        <li class="nav-item" data-target="contact-section">
+          <span class="nav-icon">📍</span>
+          <span>Contact & Location</span>
+        </li>
+        <li class="nav-item" data-target="faq-section">
+          <span class="nav-icon">❓</span>
+          <span>Warranty & FAQs</span>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">Currency</span>
+          <select id="currency-select" class="filter-select" style="height:28px; font-size:0.8rem;">
+            <option value="BDT">BDT (৳)</option>
+            <option value="USD">USD ($)</option>
+          </select>
+        </div>
+        <button id="theme-toggle-btn" class="action-btn" style="width:100%; justify-content:center; font-size:0.85rem;">
+          🌙 Dark Mode
+        </button>
+        <div style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:4px;">
+          Milon Machinaries © 2026<br>10/2 Modon Pal Lane, Dhaka
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         NOTION MAIN CONTENT AREA
+         ========================================================================== -->
+    <main class="notion-main">
+
+      <!-- Notion Sticky Topbar -->
+      <header class="notion-topbar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <button id="mobile-toggle-nav" class="mobile-toggle-btn" aria-label="Open Navigation">☰</button>
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <span>Milon Machinaries</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-active" id="topbar-breadcrumb">Machinery Catalog</span>
+          </nav>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="mailto:me.hasaniqbalme@gmail.com" class="action-btn" title="Email Milon Machinaries">
+            ✉️ me.hasaniqbalme@gmail.com
+          </a>
+          <button class="action-btn primary" onclick="document.querySelector('[data-target=\'rfq-section\']').click()">
+            📋 Get Quotation
+          </button>
+        </div>
+      </header>
+
+      <!-- Notion Page Cover Banner -->
+      <div class="notion-cover" aria-hidden="true"></div>
+
+      <!-- Notion Page Header Header -->
+      <div class="notion-page-header">
+        <div class="page-icon-wrapper" id="main-page-icon">⚙️</div>
+        <h1 class="page-title" id="main-page-title">Milon Machinaries</h1>
+        <p class="page-description" id="main-page-desc">
+          Premier Industrial Machinery Supplier, Precision Machine Tools & Spare Parts Engineering Solutions in Dhaka, Bangladesh.
+        </p>
+
+        <!-- Company Callout Banner -->
+        <div class="notion-callout">
+          <span class="callout-icon">📍</span>
+          <div class="callout-content">
+            <div class="callout-title">Milon Machinaries Headquarters & Showroom</div>
+            <p>
+              <strong>Address:</strong> 10/2 Modon Pal Lane, Dhaka, 1100, Bangladesh &nbsp;|&nbsp; 
+              <strong>Email:</strong> <a href="mailto:me.hasaniqbalme@gmail.com" style="text-decoration:underline;">me.hasaniqbalme@gmail.com</a> &nbsp;|&nbsp; 
+              <strong>Hotline:</strong> +880 1711-892341 / +880 2-9554102
+            </p>
+          </div>
+        </div>
+
+        <!-- ==========================================================================
+             PAGE SECTION 1: MACHINERY CATALOG
+             ========================================================================== -->
+        <section id="catalog-section" class="page-section" style="display:block;">
+          
+          <!-- Database Views Bar & Controls -->
+          <div class="database-controls-bar">
+            <div class="view-tabs" role="tablist">
+              <button class="view-tab active" data-view="gallery" role="tab" aria-selected="true">
+                <span>🖼️</span> Gallery View
+              </button>
+              <button class="view-tab" data-view="table" role="tab" aria-selected="false">
+                <span>📊</span> Table View
+              </button>
+              <button class="view-tab" data-view="board" role="tab" aria-selected="false">
+                <span>📋</span> Board View
+              </button>
+            </div>
+
+            <div class="filter-search-group">
+              <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search machines or specs..." aria-label="Search machinery catalog" />
+              </div>
+
+              <select id="category-filter" class="filter-select" aria-label="Filter by category">
+                <option value="all">All Categories</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic Machinery Catalog Render Container -->
+          <div id="catalog-container" class="gallery-grid"></div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE SECTION 2: RFQ QUOTE SHORTLIST
+             ========================================================================== -->
+        <section id="rfq-section" class="page-section" style="display:none;">
+          <div id="rfq-section-container"></div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE SECTION 3: WORKSHOP SERVICES
+             ========================================================================== -->
+        <section id="services-section" class="page-section" style="display:none; margin-bottom: 40px;">
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 12px;">Engineering & Workshop Capabilities</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            In addition to machinery sales, Milon Machinaries operates a 12,500 sq. ft. precision engineering workshop in Dhaka providing custom machining, rebuilds, and factory maintenance services.
+          </p>
+          <div id="services-grid-container" style="display: flex; flex-direction: column; gap: 16px;"></div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE SECTION 4: CONTACT & LOCATION
+             ========================================================================== -->
+        <section id="contact-section" class="page-section" style="display:none; margin-bottom: 40px;">
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 16px;">Contact Milon Machinaries</h2>
+          
+          <div class="form-grid" style="margin-bottom: 24px;">
+            <div class="notion-callout" style="grid-column: span 1; margin: 0;">
+              <span class="callout-icon">✉️</span>
+              <div class="callout-content">
+                <div class="callout-title">Direct Procurement Email</div>
+                <p><a href="mailto:me.hasaniqbalme@gmail.com" style="font-family:var(--font-mono); font-weight:bold; text-decoration:underline;">me.hasaniqbalme@gmail.com</a></p>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Guaranteed official response within 2 hours.</p>
+              </div>
+            </div>
+
+            <div class="notion-callout" style="grid-column: span 1; margin: 0;">
+              <span class="callout-icon">📍</span>
+              <div class="callout-content">
+                <div class="callout-title">Dhaka Showroom & Workshop Address</div>
+                <p>10/2 Modon Pal Lane, Dhaka, 1100, Bangladesh</p>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Sat - Thu: 9:00 AM - 7:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rfq-container">
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 16px;">Send Direct Technical Inquiry</h3>
+            <form id="contact-direct-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Your Full Name *</label>
+                  <input type="text" id="contact-name" required placeholder="Full Name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone / WhatsApp Number *</label>
+                  <input type="text" id="contact-phone" required placeholder="+880 17..." />
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label">Message / Machinery Requirement Details *</label>
+                  <textarea id="contact-message" rows="4" required placeholder="Describe your machine requirements, model numbers, or custom workpiece dimensions..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="action-btn primary" style="padding: 12px 24px; font-size: 0.95rem;">
+                ✉️ Send Message to me.hasaniqbalme@gmail.com
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE SECTION 5: WARRANTY & FAQS
+             ========================================================================== -->
+        <section id="faq-section" class="page-section" style="display:none; margin-bottom: 40px;">
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 16px;">Frequently Asked Questions & Warranty Terms</h2>
+          <div id="faq-container"></div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ==========================================================================
+       NOTION SIDE DRAWER (PEEK VIEW MODAL)
+       ========================================================================== -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true">
+    <div class="notion-drawer" role="dialog" aria-modal="true" aria-label="Machinery Details Peek View">
+      <div class="drawer-header">
+        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+          Machinery Detail Peek
+        </span>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close drawer">✕</button>
+      </div>
+      <div class="drawer-body" id="drawer-body">
+        <!-- Dynamically rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       COMMAND PALETTE MODAL (CTRL+K / / KEY)
+       ========================================================================== -->
+  <div class="command-modal" id="command-modal" role="dialog" aria-modal="true" aria-label="Quick Search Command Palette">
+    <div class="command-input-wrapper">
+      <span style="font-size: 1.2rem; color: var(--text-muted); margin-right: 8px;">🔍</span>
+      <input type="text" id="command-input" placeholder="Type a machine name, model number, or keyword..." aria-label="Type command or search query" />
+      <span class="kbd-shortcut">ESC</span>
+    </div>
+    <ul class="command-results-list" id="command-results">
+      <!-- Dynamically populated by JS -->
+    </ul>
+  </div>
+
+  <!-- App Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
