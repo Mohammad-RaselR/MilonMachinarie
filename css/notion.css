@@ -571,39 +571,16 @@ details[open] .toggle-arrow {
   border-color: var(--border-strong);
 }
 
-.card-media-wrapper {
-  height: 220px;
-  background-color: var(--bg-secondary);
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.card-media-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-normal);
-}
-
-.machinery-card:hover .card-media-wrapper img {
-  transform: scale(1.04);
-}
-
 .card-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  background: var(--bg-main);
+  background: var(--bg-tag);
   color: var(--text-main);
   border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
 }
 
 .card-content {

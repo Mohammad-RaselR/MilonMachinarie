@@ -1,6 +1,6 @@
 /* ==========================================================================
    DATA STORE - MILON MACHINARIES
-   Production-Ready Industrial Machinery Catalog with Embedded Visuals
+   Production-Ready Industrial Machinery Catalog (Pure Minimalist Typography)
    ========================================================================== */
 
 const COMPANY_INFO = {
@@ -19,97 +19,6 @@ const COMPANY_INFO = {
   certifications: ["ISO 9001:2015 Certified", "BUET Quality Inspected", "BSTI Compliant Import License"]
 };
 
-// SVG Vector Graphics Generator for Monochrome Industrial Visuals
-function getMachineryGraphic(type) {
-  const bg = "#F4F4F2";
-  const stroke = "#191919";
-  const fillAccent = "#444444";
-
-  if (type === "lathe") {
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-      <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="80" y="220" width="440" height="30" fill="${fillAccent}" opacity="0.15"/>
-        <rect x="70" y="250" width="70" height="100" fill="${bg}"/>
-        <rect x="460" y="250" width="70" height="100" fill="${bg}"/>
-        <rect x="90" y="120" width="130" height="100" fill="${bg}"/>
-        <circle cx="155" cy="170" r="35" stroke="${stroke}" stroke-width="4"/>
-        <circle cx="155" cy="170" r="12" fill="${stroke}"/>
-        <rect x="260" y="160" width="60" height="60" fill="${bg}"/>
-        <polygon points="290,130 310,160 270,160"/>
-        <rect x="420" y="140" width="50" height="80" fill="${bg}"/>
-        <line x1="80" y1="350" x2="520" y2="350" stroke-width="4"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">PRECISION ENGINE LATHE MACHINE</text>
-      </g>
-    </svg>`;
-  }
-
-  if (type === "cnc") {
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-      <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="100" y="60" width="400" height="280" rx="8" fill="${bg}"/>
-        <rect x="140" y="90" width="180" height="140" rx="4" fill="${fillAccent}" opacity="0.15"/>
-        <rect x="350" y="90" width="120" height="220" rx="4" fill="${bg}"/>
-        <rect x="370" y="110" width="80" height="60" fill="${stroke}"/>
-        <circle cx="385" cy="200" r="8" fill="${stroke}"/>
-        <circle cx="415" cy="200" r="8" fill="${stroke}"/>
-        <circle cx="445" cy="200" r="8" fill="${stroke}"/>
-        <path d="M 180,230 L 280,230 L 280,300 L 180,300 Z"/>
-        <text x="300" y="385" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">SLANT BED CNC TURNING CENTER</text>
-      </g>
-    </svg>`;
-  }
-
-  if (type === "vmc") {
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-      <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="200" y="50" width="200" height="300" fill="${bg}"/>
-        <rect x="140" y="250" width="320" height="40" fill="${fillAccent}" opacity="0.2"/>
-        <rect x="250" y="110" width="100" height="70" fill="${bg}"/>
-        <line x1="300" y1="180" x2="300" y2="250" stroke-width="6"/>
-        <circle cx="300" cy="255" r="14" fill="${stroke}"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">VERTICAL MACHINING CENTER (VMC)</text>
-      </g>
-    </svg>`;
-  }
-
-  if (type === "press") {
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-      <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="160" y="50" width="40" height="300" fill="${bg}"/>
-        <rect x="400" y="50" width="40" height="300" fill="${bg}"/>
-        <rect x="140" y="50" width="320" height="40" fill="${stroke}"/>
-        <rect x="140" y="310" width="320" height="40" fill="${stroke}"/>
-        <rect x="270" y="90" width="60" height="100" fill="${fillAccent}" opacity="0.3"/>
-        <rect x="200" y="220" width="200" height="30" fill="${bg}"/>
-        <line x1="300" y1="190" x2="300" y2="220" stroke-width="8"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">100-TON HYDRAULIC PRESS</text>
-      </g>
-    </svg>`;
-  }
-
-  if (type === "generator") {
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-      <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="100" y="80" width="400" height="240" rx="12" fill="${bg}"/>
-        <line x1="160" y1="120" x2="160" y2="280"/>
-        <line x1="180" y1="120" x2="180" y2="280"/>
-        <line x1="200" y1="120" x2="200" y2="280"/>
-        <circle cx="340" cy="180" r="45" fill="${fillAccent}" opacity="0.2"/>
-        <path d="M 320,180 L 340,150 L 340,180 L 360,180 L 340,210 L 340,180 Z" fill="${stroke}"/>
-        <rect x="420" y="120" width="60" height="120" fill="${bg}"/>
-        <text x="300" y="375" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">150 KVA INDUSTRIAL DIESEL GENERATOR</text>
-      </g>
-    </svg>`;
-  }
-
-  return getMachineryGraphic("lathe");
-}
-
 const MACHINERY_CATALOG = [
   {
     id: "mm-l6240",
@@ -121,7 +30,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 8450,
     priceBDT: 985000,
     rating: 4.9,
-    image: getMachineryGraphic("lathe"),
     shortDesc: "High rigid bed, hardened induction guide ways, ideal for precision turning, facing, threading, and boring in Dhaka engineering workshops.",
     specs: {
       "Max Swing Over Bed": "400 mm (16\")",
@@ -145,7 +53,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 24500,
     priceBDT: 2850000,
     rating: 5.0,
-    image: getMachineryGraphic("cnc"),
     shortDesc: "High performance slant-bed CNC lathe equipped with Siemens 808D Advanced controller and 8-station hydraulic turret for batch manufacturing.",
     specs: {
       "Control System": "Siemens 808D Advanced CNC / Fanuc 0i-TF optional",
@@ -169,7 +76,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 38900,
     priceBDT: 4520000,
     rating: 4.95,
-    image: getMachineryGraphic("vmc"),
     shortDesc: "3-Axis VMC with linear roller guideways, 10,000 RPM BT40 spindle, and 24-tool ARM type automatic tool changer for die & mold making.",
     specs: {
       "Table Size": "1000 x 500 mm",
@@ -193,7 +99,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 4200,
     priceBDT: 490000,
     rating: 4.8,
-    image: getMachineryGraphic("press"),
     shortDesc: "Heavy duty double-acting hydraulic cylinder press for pressing bearings, bending, straightening, and deep drawing applications.",
     specs: {
       "Nominal Force": "1000 kN (100 Metric Tons)",
@@ -217,7 +122,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 14800,
     priceBDT: 1725000,
     rating: 4.9,
-    image: getMachineryGraphic("generator"),
     shortDesc: "Heavy duty industrial power generator powered by Cummins 6BTA 5.9-G2 engine with Stamford alternator and DeepSea ATS automatic switch.",
     specs: {
       "Prime Power Rating": "150 kVA / 120 kW (3-Phase 400V 50Hz)",
@@ -241,7 +145,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 6100,
     priceBDT: 710000,
     rating: 4.85,
-    image: getMachineryGraphic("generator"),
     shortDesc: "Energy efficient rotary screw compressor complete with integrated refrigerated air dryer, precision oil separator filters, and 500L receiver tank.",
     specs: {
       "Motor Power": "22 kW / 30 HP",
@@ -265,7 +168,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 16500,
     priceBDT: 1920000,
     rating: 4.88,
-    image: getMachineryGraphic("press"),
     shortDesc: "High accuracy hydraulic plate shear with ESTUN E21S NC backgauge positioning controller for sheet metal fabrication works.",
     specs: {
       "Max Cutting Thickness": "6.0 mm (Mild Steel) / 3.0 mm (Stainless)",
@@ -288,7 +190,6 @@ const MACHINERY_CATALOG = [
     priceUSD: 240,
     priceBDT: 28000,
     rating: 4.9,
-    image: getMachineryGraphic("lathe"),
     shortDesc: "Premium forged steel body 4-jaw independent lathe chuck with reversible hardened jaws and back mounting plate suitable for D1-6 spindles.",
     specs: {
       "Chuck Diameter": "250 mm (10\")",

@@ -1,6 +1,6 @@
 /* ==========================================================================
    APP ENGINE - MILON MACHINARIES LANDING PAGE
-   Vanilla JavaScript Application
+   Pure Minimalist Typography-Driven Notion Application (No Images)
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -116,19 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
     catalogContainer.className = "gallery-grid";
     catalogContainer.innerHTML = items.map(item => `
       <div class="machinery-card" data-id="${item.id}">
-        <div class="card-media-wrapper">
-          <img src="${item.image}" alt="${item.name}" loading="lazy" onError="this.src='images/hero.png'" />
-          <span class="card-badge">${item.condition}</span>
-        </div>
         <div class="card-content">
-          <span class="card-category">${item.category}</span>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span class="card-category">${item.category}</span>
+            <span class="card-badge">${item.condition}</span>
+          </div>
           <h3 class="card-title">${item.name} <span style="font-size:0.85rem; font-family:var(--font-mono); color:var(--text-muted);">(${item.model})</span></h3>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:14px;">${item.shortDesc}</p>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px; line-height:1.5;">${item.shortDesc}</p>
+          
           <ul class="card-specs-list">
-            ${Object.entries(item.specs).slice(0, 3).map(([k, v]) => `
+            ${Object.entries(item.specs).slice(0, 4).map(([k, v]) => `
               <li><span>${k}:</span> <span class="val">${v}</span></li>
             `).join('')}
           </ul>
+          
           <div class="card-footer">
             <span class="card-price">${formatPrice(item)}</span>
             <button class="card-btn inspect-btn" data-id="${item.id}">Inspect Specs ▶</button>
@@ -188,19 +189,20 @@ document.addEventListener("DOMContentLoaded", () => {
           const catItems = items.filter(i => i.category === cat);
           return `
             <div class="board-column" style="flex:0 0 320px; background:var(--bg-secondary); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:16px;">
-              <div style="font-weight:700; margin-bottom:12px; display:flex; justify-content:space-between;">
+              <div style="font-weight:700; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
                 <span>${cat}</span>
                 <span class="kbd-shortcut">${catItems.length}</span>
               </div>
               <div style="display:flex; flex-direction:column; gap:12px;">
                 ${catItems.map(item => `
                   <div class="machinery-card" data-id="${item.id}">
-                    <div style="padding:12px;">
+                    <div style="padding:16px;">
                       <div class="card-category">${item.model}</div>
-                      <h4 class="card-title" style="font-size:0.95rem;">${item.name}</h4>
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                        <span class="card-price" style="font-size:0.9rem;">${formatPrice(item)}</span>
-                        <button class="card-btn inspect-btn" data-id="${item.id}" style="font-size:0.75rem; padding:4px 8px;">View</button>
+                      <h4 class="card-title" style="font-size:0.98rem; margin-bottom:6px;">${item.name}</h4>
+                      <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:10px;">${item.shortDesc}</p>
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span class="card-price" style="font-size:0.95rem;">${formatPrice(item)}</span>
+                        <button class="card-btn inspect-btn" data-id="${item.id}" style="font-size:0.78rem; padding:4px 10px;">Inspect</button>
                       </div>
                     </div>
                   </div>
@@ -244,16 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
     state.selectedItemForDrawer = item;
 
     drawerBody.innerHTML = `
-      <div class="drawer-header-content" style="margin-bottom: 20px;">
-        <span class="status-tag" style="margin-bottom: 8px;">${item.condition} • ${item.category}</span>
-        <h2 style="font-size: 1.8rem; font-weight: 800; line-height: 1.2;">${item.name}</h2>
-        <p style="font-family: var(--font-mono); font-size: 1rem; color: var(--text-secondary); margin-top: 4px;">
+      <div class="drawer-header-content" style="margin-bottom: 24px;">
+        <span class="status-tag" style="margin-bottom: 10px;">${item.condition} • ${item.category}</span>
+        <h2 style="font-size: 1.9rem; font-weight: 800; line-height: 1.2;">${item.name}</h2>
+        <p style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-secondary); margin-top: 6px;">
           Model: ${item.model} | SKU: MM-${item.id.toUpperCase()}
         </p>
-      </div>
-
-      <div class="drawer-image-wrapper">
-        <img src="${item.image}" alt="${item.name}" onError="this.src='images/hero.png'" />
       </div>
 
       <div class="notion-callout">
@@ -264,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
 
-      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">Technical Specifications</h3>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 14px;">Technical Specifications</h3>
       <div class="spec-grid">
         ${Object.entries(item.specs).map(([label, val]) => `
           <div class="spec-item">
@@ -277,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="pricing-action-box" style="background-color: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 20px; margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
         <div>
           <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Standard Procurement Price</span>
-          <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800;">${formatPrice(item)}</div>
+          <div style="font-family: var(--font-mono); font-size: 1.9rem; font-weight: 800;">${formatPrice(item)}</div>
           <span style="font-size: 0.75rem; color: var(--text-secondary);">* Ex-works Dhaka Showroom (10/2 Modon Pal Lane). Includes 15% VAT breakdown on official invoice.</span>
         </div>
 
@@ -372,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ${state.selectedCurrency === "USD" ? `$${totalUSD.toLocaleString()}` : `৳${totalBDT.toLocaleString()}`}
           </td>
           <td>
-            <button class="remove-rfq-item" data-id="${item.id}" style="color: var(--text-muted); font-size: 1.1rem;">×</button>
+            <button class="remove-rfq-item" data-id="${item.id}" style="color: var(--text-muted); font-size: 1.1rem;">× font-size: 1.2rem;</button>
           </td>
         </tr>
       `;
@@ -550,7 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    commandResults.innerHTML = matches.map((item, index) => `
+    commandResults.innerHTML = matches.map((item) => `
       <li class="command-item" data-id="${item.id}">
         <div style="display:flex; align-items:center; gap:12px;">
           <span style="font-size: 1.1rem;">⚙️</span>
