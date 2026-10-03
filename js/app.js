@@ -1,10 +1,10 @@
 /* ==========================================================================
-   APP ENGINE - MILON MACHINARIES
-   Vanilla JavaScript Notion-Style Application
+   APP ENGINE - MILON MACHINARIES LANDING PAGE
+   Vanilla JavaScript Application
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // App State Management
+  // App State
   const state = {
     currentCategory: "all",
     currentView: "gallery", // gallery | table | board
@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     theme: localStorage.getItem("mm_theme") || "light",
     rfqItems: [],
     selectedItemForDrawer: null,
-    selectedCurrency: "BDT" // BDT | USD
+    selectedCurrency: "BDT"
   };
 
-  // Set initial theme
+  // Apply Theme
   document.documentElement.setAttribute("data-theme", state.theme);
 
   // DOM Elements
@@ -23,10 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");
   const categoryFilter = document.getElementById("category-filter");
   const viewTabs = document.querySelectorAll(".view-tab");
-  const navItems = document.querySelectorAll(".nav-item");
-  const mainTitle = document.getElementById("main-page-title");
-  const mainDesc = document.getElementById("main-page-desc");
-  const mainIcon = document.getElementById("main-page-icon");
   const rfqBadge = document.getElementById("rfq-count-badge");
   
   // Modals & Drawers
@@ -40,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggleBtn = document.getElementById("theme-toggle-btn");
 
   /* ==========================================================================
-     1. INITIALIZATION & RENDER
+     1. INITIALIZATION
      ========================================================================== */
 
   function init() {
@@ -121,13 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
     catalogContainer.innerHTML = items.map(item => `
       <div class="machinery-card" data-id="${item.id}">
         <div class="card-media-wrapper">
-          <img src="${createMachinerySVG(item.imageType)}" alt="${item.name}" loading="lazy" />
+          <img src="${item.image}" alt="${item.name}" loading="lazy" onError="this.src='images/hero.png'" />
           <span class="card-badge">${item.condition}</span>
         </div>
         <div class="card-content">
           <span class="card-category">${item.category}</span>
           <h3 class="card-title">${item.name} <span style="font-size:0.85rem; font-family:var(--font-mono); color:var(--text-muted);">(${item.model})</span></h3>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">${item.shortDesc}</p>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:14px;">${item.shortDesc}</p>
           <ul class="card-specs-list">
             ${Object.entries(item.specs).slice(0, 3).map(([k, v]) => `
               <li><span>${k}:</span> <span class="val">${v}</span></li>
@@ -162,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <tbody>
             ${items.map(item => `
               <tr data-id="${item.id}" class="clickable-row">
-                <td class="mono-cell model-cell">${item.model}</td>
+                <td class="mono-cell" style="font-weight:700;">${item.model}</td>
                 <td style="font-weight:600;">${item.name}</td>
                 <td>${item.category}</td>
                 <td><span class="status-tag">${item.condition}</span></td>
@@ -187,24 +183,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const categories = [...new Set(MACHINERY_CATALOG.map(i => i.category))];
 
     catalogContainer.innerHTML = `
-      <div class="board-container">
+      <div class="board-container" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:20px;">
         ${categories.map(cat => {
           const catItems = items.filter(i => i.category === cat);
           return `
-            <div class="board-column">
-              <div class="board-column-header">
+            <div class="board-column" style="flex:0 0 320px; background:var(--bg-secondary); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:16px;">
+              <div style="font-weight:700; margin-bottom:12px; display:flex; justify-content:space-between;">
                 <span>${cat}</span>
-                <span class="board-count">${catItems.length}</span>
+                <span class="kbd-shortcut">${catItems.length}</span>
               </div>
-              <div class="board-cards-wrapper">
+              <div style="display:flex; flex-direction:column; gap:12px;">
                 ${catItems.map(item => `
-                  <div class="machinery-card" data-id="${item.id}" style="min-height: flex;">
-                    <div class="card-content" style="padding: 12px;">
-                      <div class="card-category" style="font-size:0.7rem;">${item.model}</div>
-                      <h4 class="card-title" style="font-size:0.95rem; margin-bottom:6px;">${item.name}</h4>
-                      <div class="card-footer" style="padding-top:8px; margin-top:8px;">
+                  <div class="machinery-card" data-id="${item.id}">
+                    <div style="padding:12px;">
+                      <div class="card-category">${item.model}</div>
+                      <h4 class="card-title" style="font-size:0.95rem;">${item.name}</h4>
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
                         <span class="card-price" style="font-size:0.9rem;">${formatPrice(item)}</span>
-                        <button class="card-btn inspect-btn" data-id="${item.id}" style="font-size:0.75rem; padding: 4px 8px;">View</button>
+                        <button class="card-btn inspect-btn" data-id="${item.id}" style="font-size:0.75rem; padding:4px 8px;">View</button>
                       </div>
                     </div>
                   </div>
@@ -250,14 +246,14 @@ document.addEventListener("DOMContentLoaded", () => {
     drawerBody.innerHTML = `
       <div class="drawer-header-content" style="margin-bottom: 20px;">
         <span class="status-tag" style="margin-bottom: 8px;">${item.condition} • ${item.category}</span>
-        <h2 style="font-size: 1.8rem; font-weight: 700; line-height: 1.2;">${item.name}</h2>
-        <p style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-secondary); margin-top: 4px;">
+        <h2 style="font-size: 1.8rem; font-weight: 800; line-height: 1.2;">${item.name}</h2>
+        <p style="font-family: var(--font-mono); font-size: 1rem; color: var(--text-secondary); margin-top: 4px;">
           Model: ${item.model} | SKU: MM-${item.id.toUpperCase()}
         </p>
       </div>
 
       <div class="drawer-image-wrapper">
-        <img src="${createMachinerySVG(item.imageType)}" alt="${item.name}" />
+        <img src="${item.image}" alt="${item.name}" onError="this.src='images/hero.png'" />
       </div>
 
       <div class="notion-callout">
@@ -268,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;">Technical Specifications</h3>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 12px;">Technical Specifications</h3>
       <div class="spec-grid">
         ${Object.entries(item.specs).map(([label, val]) => `
           <div class="spec-item">
@@ -278,13 +274,11 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join('')}
       </div>
 
-      <div class="pricing-action-box" style="background-color: var(--bg-sidebar); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 20px; margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Standard Procurement Price</span>
-            <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700;">${formatPrice(item)}</div>
-            <span style="font-size: 0.75rem; color: var(--text-secondary);">* Ex-works Dhaka Showroom (10/2 Modon Pal Lane). Includes 15% VAT breakdown on official invoice.</span>
-          </div>
+      <div class="pricing-action-box" style="background-color: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 20px; margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Standard Procurement Price</span>
+          <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800;">${formatPrice(item)}</div>
+          <span style="font-size: 0.75rem; color: var(--text-secondary);">* Ex-works Dhaka Showroom (10/2 Modon Pal Lane). Includes 15% VAT breakdown on official invoice.</span>
         </div>
 
         <div style="display: flex; gap: 12px;">
@@ -300,7 +294,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     drawerOverlay.classList.add("active");
 
-    // Drawer internal listeners
     document.getElementById("add-to-rfq-btn")?.addEventListener("click", () => {
       addToRFQ(item);
       showToast(`Added ${item.model} to your quotation shortlist.`);
@@ -319,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-     5. RFQ QUOTE SHORTLIST MANAGEMENT
+     5. RFQ QUOTE SHORTLIST
      ========================================================================== */
 
   function addToRFQ(item) {
@@ -385,7 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }).join('');
 
-    const vatBDT = subtotalBDT * 0.05; // 5% VAT preview
+    const vatBDT = subtotalBDT * 0.05;
     const vatUSD = subtotalUSD * 0.05;
 
     const grandTotalBDT = subtotalBDT + vatBDT;
@@ -417,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <form id="rfq-form">
-          <h4 style="font-weight: 600; margin-bottom: 12px;">Company & Delivery Information</h4>
+          <h4 style="font-weight: 700; margin-bottom: 12px;">Company & Delivery Information</h4>
           <div class="form-grid">
             <div class="form-group">
               <label class="form-label">Company / Client Name *</label>
@@ -468,7 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // RFQ Event Listeners
     document.querySelectorAll(".rfq-qty-input").forEach(input => {
       input.addEventListener("change", (e) => {
         const id = input.getAttribute("data-id");
@@ -559,12 +551,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     commandResults.innerHTML = matches.map((item, index) => `
-      <li class="command-item ${index === 0 ? 'selected' : ''}" data-id="${item.id}">
-        <div class="command-item-left">
+      <li class="command-item" data-id="${item.id}">
+        <div style="display:flex; align-items:center; gap:12px;">
           <span style="font-size: 1.1rem;">⚙️</span>
           <div>
-            <div class="command-item-title">${item.name} <span class="kbd-shortcut">${item.model}</span></div>
-            <div class="command-item-category">${item.category} • ${formatPrice(item)}</div>
+            <div style="font-weight:600;">${item.name} <span class="kbd-shortcut">${item.model}</span></div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">${item.category} • ${formatPrice(item)}</div>
           </div>
         </div>
         <span style="font-size: 0.8rem; color: var(--text-muted);">Press Enter ↵</span>
@@ -616,10 +608,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join('');
   }
 
-  /* ==========================================================================
-     8. TOAST NOTIFICATION HELPERS
-     ========================================================================== */
-
   function showToast(message) {
     let container = document.querySelector(".toast-container");
     if (!container) {
@@ -639,23 +627,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-     9. EVENT LISTENERS SETUP
+     8. EVENT LISTENERS
      ========================================================================== */
 
   function setupEventListeners() {
-    // Search input
     searchInput?.addEventListener("input", (e) => {
       state.searchQuery = e.target.value;
       renderCatalog();
     });
 
-    // Category Filter
     categoryFilter?.addEventListener("change", (e) => {
       state.currentCategory = e.target.value;
       renderCatalog();
     });
 
-    // View Switcher (Gallery, Table, Board)
     viewTabs.forEach(tab => {
       tab.addEventListener("click", () => {
         viewTabs.forEach(t => t.classList.remove("active"));
@@ -665,47 +650,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Currency Switcher
     document.getElementById("currency-select")?.addEventListener("change", (e) => {
       state.selectedCurrency = e.target.value;
       renderCatalog();
       renderRFQSection();
     });
 
-    // Sidebar Nav Items (Page Tabs)
-    navItems.forEach(item => {
-      item.addEventListener("click", () => {
-        navItems.forEach(i => i.classList.remove("active"));
-        item.classList.add("active");
-
-        const targetSectionId = item.getAttribute("data-target");
-        
-        // Hide all main sections
-        document.querySelectorAll(".page-section").forEach(sec => sec.style.display = "none");
-        
-        // Show target section
-        const targetSec = document.getElementById(targetSectionId);
-        if (targetSec) targetSec.style.display = "block";
-
-        // Update header details based on nav tab
-        const titleText = item.innerText.trim();
-        if (mainTitle) mainTitle.textContent = titleText;
-
-        if (targetSectionId === "rfq-section") {
-          renderRFQSection();
-        }
-      });
-    });
-
-    // Side Drawer Close Buttons
     drawerCloseBtn?.addEventListener("click", closeSideDrawer);
     drawerOverlay?.addEventListener("click", (e) => {
       if (e.target === drawerOverlay) closeSideDrawer();
     });
 
-    // Command Palette Triggering
     document.getElementById("open-command-btn")?.addEventListener("click", () => toggleCommandPalette(true));
-    
+
     window.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
@@ -723,24 +680,14 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCommandResults(e.target.value);
     });
 
-    // Theme Toggle
     themeToggleBtn?.addEventListener("click", () => {
       state.theme = state.theme === "light" ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", state.theme);
       localStorage.setItem("mm_theme", state.theme);
-      themeToggleBtn.textContent = state.theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+      themeToggleBtn.textContent = state.theme === "light" ? "🌙 Dark" : "☀️ Light";
       showToast(`Switched to Notion ${state.theme === "light" ? "Light" : "Dark"} theme.`);
     });
 
-    // Mobile Sidebar Toggle
-    document.getElementById("mobile-menu-btn")?.addEventListener("click", () => {
-      document.querySelector(".notion-sidebar").classList.toggle("open");
-    });
-    document.getElementById("mobile-toggle-nav")?.addEventListener("click", () => {
-      document.querySelector(".notion-sidebar").classList.toggle("open");
-    });
-
-    // Contact Direct Form Submit
     document.getElementById("contact-direct-form")?.addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("contact-name").value;
@@ -762,6 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize App
+  // Init
   init();
 });

@@ -1,6 +1,6 @@
 /* ==========================================================================
    DATA STORE - MILON MACHINARIES
-   Industrial Machinery & Spare Parts Database
+   Production-Ready Industrial Machinery Catalog with Embedded Visuals
    ========================================================================== */
 
 const COMPANY_INFO = {
@@ -19,28 +19,27 @@ const COMPANY_INFO = {
   certifications: ["ISO 9001:2015 Certified", "BUET Quality Inspected", "BSTI Compliant Import License"]
 };
 
-// Custom SVG Monochrome Graphic Generators for Machinery Visuals
-function createMachinerySVG(type) {
-  const bg = "#F0F0EE";
-  const line = "#222222";
-  const accent = "#666666";
+// SVG Vector Graphics Generator for Monochrome Industrial Visuals
+function getMachineryGraphic(type) {
+  const bg = "#F4F4F2";
+  const stroke = "#191919";
+  const fillAccent = "#444444";
 
   if (type === "lathe") {
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
       <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="80" y="220" width="440" height="40" fill="${accent}" opacity="0.15"/>
-        <rect x="60" y="260" width="80" height="90" fill="${bg}"/>
-        <rect x="460" y="260" width="80" height="90" fill="${bg}"/>
-        <rect x="100" y="120" width="120" height="100" fill="${bg}"/>
-        <circle cx="160" cy="170" r="35" stroke="${line}" stroke-width="3"/>
-        <circle cx="160" cy="170" r="10" fill="${line}"/>
-        <rect x="250" y="160" width="60" height="60" fill="${bg}"/>
-        <polygon points="280,130 300,160 260,160"/>
+      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="80" y="220" width="440" height="30" fill="${fillAccent}" opacity="0.15"/>
+        <rect x="70" y="250" width="70" height="100" fill="${bg}"/>
+        <rect x="460" y="250" width="70" height="100" fill="${bg}"/>
+        <rect x="90" y="120" width="130" height="100" fill="${bg}"/>
+        <circle cx="155" cy="170" r="35" stroke="${stroke}" stroke-width="4"/>
+        <circle cx="155" cy="170" r="12" fill="${stroke}"/>
+        <rect x="260" y="160" width="60" height="60" fill="${bg}"/>
+        <polygon points="290,130 310,160 270,160"/>
         <rect x="420" y="140" width="50" height="80" fill="${bg}"/>
-        <path d="M 420,180 L 350,180"/>
-        <line x1="80" y1="350" x2="520" y2="350"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">PRECISION ENGINE LATHE - MODEL MM-L6240</text>
+        <line x1="80" y1="350" x2="520" y2="350" stroke-width="4"/>
+        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">PRECISION ENGINE LATHE MACHINE</text>
       </g>
     </svg>`;
   }
@@ -48,49 +47,46 @@ function createMachinerySVG(type) {
   if (type === "cnc") {
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
       <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="100" y="60" width="400" height="280" rx="8" fill="${bg}"/>
-        <rect x="140" y="90" width="180" height="140" rx="4" fill="${accent}" opacity="0.1"/>
+        <rect x="140" y="90" width="180" height="140" rx="4" fill="${fillAccent}" opacity="0.15"/>
         <rect x="350" y="90" width="120" height="220" rx="4" fill="${bg}"/>
-        <rect x="370" y="110" width="80" height="60" fill="${line}" opacity="0.8"/>
-        <circle cx="385" cy="200" r="8" fill="${line}"/>
-        <circle cx="415" cy="200" r="8" fill="${line}"/>
-        <circle cx="445" cy="200" r="8" fill="${line}"/>
+        <rect x="370" y="110" width="80" height="60" fill="${stroke}"/>
+        <circle cx="385" cy="200" r="8" fill="${stroke}"/>
+        <circle cx="415" cy="200" r="8" fill="${stroke}"/>
+        <circle cx="445" cy="200" r="8" fill="${stroke}"/>
         <path d="M 180,230 L 280,230 L 280,300 L 180,300 Z"/>
-        <line x1="100" y1="360" x2="500" y2="360"/>
-        <text x="300" y="385" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">INDUSTRIAL CNC TURNING CENTER - MM-CNC500</text>
+        <text x="300" y="385" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">SLANT BED CNC TURNING CENTER</text>
       </g>
     </svg>`;
   }
 
-  if (type === "milling") {
+  if (type === "vmc") {
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
       <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="220" y="60" width="160" height="280" fill="${bg}"/>
-        <rect x="140" y="240" width="320" height="40" fill="${accent}" opacity="0.2"/>
-        <rect x="250" y="120" width="100" height="60" fill="${bg}"/>
-        <line x1="300" y1="180" x2="300" y2="240" stroke-width="6"/>
-        <circle cx="300" cy="245" r="14" fill="${line}"/>
-        <circle cx="260" cy="90" r="16" fill="${line}"/>
-        <circle cx="340" cy="90" r="16" fill="${line}"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">VERTICAL MACHINING CENTER - VMC850</text>
+      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="200" y="50" width="200" height="300" fill="${bg}"/>
+        <rect x="140" y="250" width="320" height="40" fill="${fillAccent}" opacity="0.2"/>
+        <rect x="250" y="110" width="100" height="70" fill="${bg}"/>
+        <line x1="300" y1="180" x2="300" y2="250" stroke-width="6"/>
+        <circle cx="300" cy="255" r="14" fill="${stroke}"/>
+        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">VERTICAL MACHINING CENTER (VMC)</text>
       </g>
     </svg>`;
   }
 
-  if (type === "hydraulic") {
+  if (type === "press") {
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
       <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="160" y="50" width="40" height="300" fill="${bg}"/>
         <rect x="400" y="50" width="40" height="300" fill="${bg}"/>
-        <rect x="140" y="50" width="320" height="40" fill="${line}"/>
-        <rect x="140" y="310" width="320" height="40" fill="${line}"/>
-        <rect x="270" y="90" width="60" height="100" fill="${accent}" opacity="0.3"/>
+        <rect x="140" y="50" width="320" height="40" fill="${stroke}"/>
+        <rect x="140" y="310" width="320" height="40" fill="${stroke}"/>
+        <rect x="270" y="90" width="60" height="100" fill="${fillAccent}" opacity="0.3"/>
         <rect x="200" y="220" width="200" height="30" fill="${bg}"/>
         <line x1="300" y1="190" x2="300" y2="220" stroke-width="8"/>
-        <text x="300" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">100-TON HYDRAULIC PRESS - MM-HP100T</text>
+        <text x="300" y="380" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">100-TON HYDRAULIC PRESS</text>
       </g>
     </svg>`;
   }
@@ -98,29 +94,20 @@ function createMachinerySVG(type) {
   if (type === "generator") {
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
       <rect width="600" height="400" fill="${bg}"/>
-      <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="${stroke}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <rect x="100" y="80" width="400" height="240" rx="12" fill="${bg}"/>
         <line x1="160" y1="120" x2="160" y2="280"/>
         <line x1="180" y1="120" x2="180" y2="280"/>
         <line x1="200" y1="120" x2="200" y2="280"/>
-        <circle cx="340" cy="180" r="45" fill="${accent}" opacity="0.15"/>
-        <path d="M 320,180 L 340,150 L 340,180 L 360,180 L 340,210 L 340,180 Z" fill="${line}"/>
+        <circle cx="340" cy="180" r="45" fill="${fillAccent}" opacity="0.2"/>
+        <path d="M 320,180 L 340,150 L 340,180 L 360,180 L 340,210 L 340,180 Z" fill="${stroke}"/>
         <rect x="420" y="120" width="60" height="120" fill="${bg}"/>
-        <text x="300" y="375" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">150 KVA HEAVY DIESEL GENERATOR - MM-DG150KVA</text>
+        <text x="300" y="375" font-family="sans-serif" font-size="13" font-weight="bold" fill="${stroke}" text-anchor="middle">150 KVA INDUSTRIAL DIESEL GENERATOR</text>
       </g>
     </svg>`;
   }
 
-  // Default Spare Parts graphic
-  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
-    <rect width="600" height="400" fill="${bg}"/>
-    <g stroke="${line}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="300" cy="180" r="70" fill="${bg}"/>
-      <circle cx="300" cy="180" r="30" fill="${line}"/>
-      <path d="M 300,90 L 300,110 M 300,250 L 300,270 M 210,180 L 230,180 M 370,180 L 390,180 M 235,115 L 250,130 M 350,230 L 365,245 M 235,245 L 250,230 M 350,130 L 365,115" stroke-width="8"/>
-      <text x="300" y="375" font-family="sans-serif" font-size="14" font-weight="bold" fill="${line}" text-anchor="middle">INDUSTRIAL SPARE PART & ACCESSORY</text>
-    </g>
-  </svg>`;
+  return getMachineryGraphic("lathe");
 }
 
 const MACHINERY_CATALOG = [
@@ -134,7 +121,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 8450,
     priceBDT: 985000,
     rating: 4.9,
-    imageType: "lathe",
+    image: getMachineryGraphic("lathe"),
     shortDesc: "High rigid bed, hardened induction guide ways, ideal for precision turning, facing, threading, and boring in Dhaka engineering workshops.",
     specs: {
       "Max Swing Over Bed": "400 mm (16\")",
@@ -158,7 +145,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 24500,
     priceBDT: 2850000,
     rating: 5.0,
-    imageType: "cnc",
+    image: getMachineryGraphic("cnc"),
     shortDesc: "High performance slant-bed CNC lathe equipped with Siemens 808D Advanced controller and 8-station hydraulic turret for batch manufacturing.",
     specs: {
       "Control System": "Siemens 808D Advanced CNC / Fanuc 0i-TF optional",
@@ -182,7 +169,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 38900,
     priceBDT: 4520000,
     rating: 4.95,
-    imageType: "milling",
+    image: getMachineryGraphic("vmc"),
     shortDesc: "3-Axis VMC with linear roller guideways, 10,000 RPM BT40 spindle, and 24-tool ARM type automatic tool changer for die & mold making.",
     specs: {
       "Table Size": "1000 x 500 mm",
@@ -206,7 +193,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 4200,
     priceBDT: 490000,
     rating: 4.8,
-    imageType: "hydraulic",
+    image: getMachineryGraphic("press"),
     shortDesc: "Heavy duty double-acting hydraulic cylinder press for pressing bearings, bending, straightening, and deep drawing applications.",
     specs: {
       "Nominal Force": "1000 kN (100 Metric Tons)",
@@ -230,7 +217,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 14800,
     priceBDT: 1725000,
     rating: 4.9,
-    imageType: "generator",
+    image: getMachineryGraphic("generator"),
     shortDesc: "Heavy duty industrial power generator powered by Cummins 6BTA 5.9-G2 engine with Stamford alternator and DeepSea ATS automatic switch.",
     specs: {
       "Prime Power Rating": "150 kVA / 120 kW (3-Phase 400V 50Hz)",
@@ -254,7 +241,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 6100,
     priceBDT: 710000,
     rating: 4.85,
-    imageType: "default",
+    image: getMachineryGraphic("generator"),
     shortDesc: "Energy efficient rotary screw compressor complete with integrated refrigerated air dryer, precision oil separator filters, and 500L receiver tank.",
     specs: {
       "Motor Power": "22 kW / 30 HP",
@@ -278,7 +265,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 16500,
     priceBDT: 1920000,
     rating: 4.88,
-    imageType: "hydraulic",
+    image: getMachineryGraphic("press"),
     shortDesc: "High accuracy hydraulic plate shear with ESTUN E21S NC backgauge positioning controller for sheet metal fabrication works.",
     specs: {
       "Max Cutting Thickness": "6.0 mm (Mild Steel) / 3.0 mm (Stainless)",
@@ -292,29 +279,6 @@ const MACHINERY_CATALOG = [
     tags: ["shearing", "guillotine", "sheet metal", "hydraulic shear", "fabrication"]
   },
   {
-    id: "mm-z5040",
-    model: "MM-Z5040",
-    name: "Heavy Duty Geared Head Radial Drilling Machine",
-    category: "Lathes & Turning",
-    condition: "Brand New",
-    inStock: true,
-    priceUSD: 3950,
-    priceBDT: 460000,
-    rating: 4.75,
-    imageType: "milling",
-    shortDesc: "Rigid column geared head radial drill with auto-feed, power elevation, and integrated tapping control for structural steel works.",
-    specs: {
-      "Max Drilling Diameter": "40 mm (Cast Iron 50mm)",
-      "Spindle Taper": "MT4 Heavy Duty",
-      "Spindle Travel": "200 mm",
-      "Distance Spindle to Column": "350 - 1250 mm",
-      "Motor Power": "3.0 kW Dual Speed",
-      "Weight": "1,400 kg",
-      "Warranty": "2 Years Electrical & Mechanical"
-    },
-    tags: ["drilling", "radial drill", "geared head", "metal drilling", "tapping"]
-  },
-  {
     id: "mm-chk4-250",
     model: "MM-CHK4-250",
     name: "250mm 4-Jaw Independent Lathe Chuck",
@@ -324,7 +288,7 @@ const MACHINERY_CATALOG = [
     priceUSD: 240,
     priceBDT: 28000,
     rating: 4.9,
-    imageType: "default",
+    image: getMachineryGraphic("lathe"),
     shortDesc: "Premium forged steel body 4-jaw independent lathe chuck with reversible hardened jaws and back mounting plate suitable for D1-6 spindles.",
     specs: {
       "Chuck Diameter": "250 mm (10\")",
@@ -335,71 +299,6 @@ const MACHINERY_CATALOG = [
       "Warranty": "1 Year Factory Warranty"
     },
     tags: ["lathe chuck", "4 jaw", "chucks", "tooling", "lathe spare part"]
-  },
-  {
-    id: "mm-dro-3ax",
-    model: "MM-DRO-3AX",
-    name: "3-Axis Digital Readout Kit with Optical Glass Scales",
-    category: "Spare Parts & Accessories",
-    condition: "In Stock - Fast Delivery",
-    inStock: true,
-    priceUSD: 320,
-    priceBDT: 37500,
-    rating: 4.95,
-    imageType: "default",
-    shortDesc: "High precision 3-axis DRO display unit with 5µm resolution glass linear scales tailored for lathe, milling, and grinding machine retrofits.",
-    specs: {
-      "Display Axes": "3 Axis (X, Y, Z / Z0)",
-      "Scale Resolution": "0.005 mm (5 Micron)",
-      "Scale Travels Included": "350mm, 750mm, 1000mm (Customizable)",
-      "Features": "PCD Hole Circle, Arc Machining, Tool Memory, Radius/Diameter Toggle",
-      "Power Supply": "AC 85V - 260V 50/60Hz",
-      "Warranty": "2 Years Replacement Warranty"
-    },
-    tags: ["dro", "digital readout", "linear scale", "lathe dro", "milling dro"]
-  },
-  {
-    id: "mm-pump-hyd",
-    model: "MM-PUMP-HYD",
-    name: "Dual-Stage High Pressure Hydraulic Vane Pump Assembly",
-    category: "Spare Parts & Accessories",
-    condition: "In Stock - Fast Delivery",
-    inStock: true,
-    priceUSD: 450,
-    priceBDT: 52500,
-    rating: 4.85,
-    imageType: "default",
-    shortDesc: "High pressure low noise variable displacement hydraulic pump rated up to 210 Bar for hydraulic presses and injection molding machines.",
-    specs: {
-      "Max Pressure": "210 Bar (3000 PSI)",
-      "Displacement": "45 L/min @ 1450 RPM",
-      "Shaft Type": "Splined Shaft SAE-B Standard",
-      "Mounting Flange": "2-Bolt SAE Flange",
-      "Net Weight": "18.5 kg",
-      "Warranty": "1 Year Guarantee"
-    },
-    tags: ["hydraulic pump", "vane pump", "fluid power", "press spare part"]
-  },
-  {
-    id: "mm-cut-tool",
-    model: "MM-CUT-TOOL",
-    name: "16mm Carbide Indexable Turning & Threading Toolset (10 Pcs)",
-    category: "Spare Parts & Accessories",
-    condition: "In Stock - Fast Delivery",
-    inStock: true,
-    priceUSD: 145,
-    priceBDT: 16800,
-    rating: 4.9,
-    imageType: "default",
-    shortDesc: "Complete 10-piece 16x16mm shank turning, facing, boring, and threading tool holders fitted with TiN coated carbide inserts.",
-    specs: {
-      "Shank Size": "16 x 16 mm",
-      "Holder Types": "SCLCR, SER, MGEHR, SDJCR, SNR, etc.",
-      "Inserts Included": "10 Pcs CCMT09T304, DCMT, ER16, MGMN200",
-      "Case": "Heavy Duty Aluminium Storage Case",
-      "Warranty": "Quality Guaranteed"
-    },
-    tags: ["carbide tools", "lathe tools", "turning inserts", "tooling"]
   }
 ];
 
